@@ -1,0 +1,44 @@
+
+
+
+  <div class="nav-below">
+
+   <div class="nav-below-right">
+     <label for="Menus">Choose a Menu:</label>
+     <select id="Menus">
+       <option value="standar menu">Standard Menu</option>
+       <option value="special menu">Special Menu</option>
+     </select>
+    </div>
+ </div>
+
+  <h1>Menu</h1>
+<%= render partial: "menus", locals:{
+                
+         menus:MenuItem.breakfast,
+         section_title: "Breakfast" 
+        
+            } %>
+
+<%= render partial: "menus", locals:{
+                
+         menus:MenuItem.lunch,
+         section_title: "Lunch" 
+        
+            } %>
+
+<%= render partial: "menus", locals:{
+                
+         menus:MenuItem.dinner,
+         section_title: "Dinner" 
+        
+            } %>
+<div class="box">
+	<a class="button" href="/orders">view cart</a>
+</div>
+
+
+
+</div>
+
+

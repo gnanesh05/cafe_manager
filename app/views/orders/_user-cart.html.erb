@@ -1,0 +1,19 @@
+<% order_cost = 0%>
+
+<section>
+ <div>
+   <% order_items.each do |item|%>
+     <p>name:       <%= item.menu_item_name %>  </p>
+     <p>item:       <%= item.menu_item_price%>   </p>
+     <p>quantity:   <%= item.quantity %>         </p>
+    <%end%>
+  </div>
+   <% if cart!=nil%>
+    <% cart.each do |order|%>
+    <%=order.date%>
+    <%=order.delivered_at%>
+    <%=order.status%>
+    <%end%>
+   <%else%>
+     <p> why don't just order a quick bite from our menu  <%= link_to "Menus", menu_items_path %> </p>
+    <%end%>
