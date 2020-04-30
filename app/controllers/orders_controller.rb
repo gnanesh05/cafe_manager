@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   def index
     if current_user
       @orders = Order.of_user(current_user)
-      order = Order.find_by("user_id = ? and status = ?", current_user.id, "not placed")
+      order = Order.current_order(current_user)
       @order_items = OrderItem.where("order_id = ?", order.id)
 
       render "index"

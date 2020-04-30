@@ -5,7 +5,7 @@ class OrderItemsController < ApplicationController
   def update
     id = params[:id]
     item = MenuItem.find(id)
-    order = Order.find_order
+    order = Order.current_order(current_user)
     cart_item = OrderItem.create!(
       menu_item_id: id,
       menu_item_name: item.name,

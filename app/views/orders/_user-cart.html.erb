@@ -1,19 +1,28 @@
-<% order_cost = 0%>
-
+<hr>
 <section>
  <div>
    <% order_items.each do |item|%>
-     <p>name:       <%= item.menu_item_name %>  </p>
-     <p>item:       <%= item.menu_item_price%>   </p>
+     <p>item:       <%= item.menu_item_name %>  </p>
+     <p>price:       <%= item.menu_item_price%>   </p>
      <p>quantity:   <%= item.quantity %>         </p>
+     <p> sum = <%= (item.menu_item_price * item.quantity) %> </p>
     <%end%>
+    
+     <p> order cost =   <% sum = 0%>
+                   <% order_items.each do |item|%> 
+                 <% sum = sum + (item.menu_item_price * item.quantity) %>
+                      <%end%>
+                        <%= sum %>
+      </p>
   </div>
-   <% if cart!=nil%>
+  <hr>
+   <h3> your previous orders </h2>
     <% cart.each do |order|%>
-    <%=order.date%>
-    <%=order.delivered_at%>
-    <%=order.status%>
+      <li> 
+       ordered on: <%=order.date%>
+       delivered at: <%=order.delivered_at%>
+       order status: <%=order.status%>
+      </li>
     <%end%>
-   <%else%>
-     <p> why don't just order a quick bite from our menu  <%= link_to "Menus", menu_items_path %> </p>
-    <%end%>
+
+   
