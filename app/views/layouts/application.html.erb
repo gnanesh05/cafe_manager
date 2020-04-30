@@ -13,13 +13,12 @@
    <div class="container-top">
                                                                         
   <div class="nav-main">
-   <% if !@current_user %>
+    <% if  @current_user %>
         <%= link_to "My Orders", orders_path %>
         <%= link_to "sign-out" ,destroy_session_path, method:"delete"%>
-        
-   <%else%>
+    <%else%>
        <%= link_to "create account" ,users_path%>
-       <%= link_to "login" ,sessions_path%>
+        <%= link_to "login" ,sessions_path%>
     <%end%>  
    <a href="/">home</a>
    <%= link_to "Menus", menu_items_path %>

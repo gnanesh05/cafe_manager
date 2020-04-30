@@ -14,7 +14,7 @@
     <td><%=item.price%></td>
     <td><%= form_with(url: order_item_path(item.id), method: :put) do %>  
        <label for="quantity">Quantity:</label>
-       <%= number_field_tag 'quantity',nil,min: 1,class: 'quantity_field'%> 
+       <%= number_field_tag(name = 'quantity' ,nil,min: 1,class: 'quantity_field')%> 
        <%= button_tag 'Add to cart',type:'submit'%>
     <% end %></td>
   </tr>

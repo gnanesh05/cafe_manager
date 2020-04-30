@@ -1,20 +1,39 @@
 <hr>
 <section>
  <div>
-   <% order_items.each do |item|%>
+<%if order_items != nil%>
+    <% order_items.each do |item|%>
      <p>item:       <%= item.menu_item_name %>  </p>
      <p>price:       <%= item.menu_item_price%>   </p>
      <p>quantity:   <%= item.quantity %>         </p>
      <p> sum = <%= (item.menu_item_price * item.quantity) %> </p>
+     <p>
+       <%= form_with(url: order_items_path(item.id), method: :delete) do %>  
+          <%= button_tag 'remove',type:'submit'%>
+      <%end%>
+    </p> 
     <%end%>
     
-     <p> order cost =   <% sum = 0%>
+    <p> order cost =   <% sum = 0%>
                    <% order_items.each do |item|%> 
                  <% sum = sum + (item.menu_item_price * item.quantity) %>
                       <%end%>
                         <%= sum %>
-      </p>
+    </p>
+    <p>
+       <%= form_with(url: order_path(order.id), method: :put) do %>  
+       <%= button_tag 'place order',type:'submit'%>
+    <% end %>
+    </p>
+    <p>
+    <%= link_to "add more", menu_items_path %>
+    </p>  
+<%else%>
+<h3> why don't you try out some from our menu </h3>
+<%end%>
+    
   </div>
+  </section>
   <hr>
    <h3> your previous orders </h2>
     <% cart.each do |order|%>
