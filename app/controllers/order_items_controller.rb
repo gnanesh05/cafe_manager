@@ -1,6 +1,16 @@
 class OrderItemsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  before_action :ensure_user_logged_in
+  skip_before_action :ensure_user_logged_in
+
+  def index
+    if current_user
+      order = Order.current_order(current_user)
+      @order = order
+      @order_items = OrderItem.where("order_id = ?", order.id)
+      render "index"
+    else
+      redirect_to users_path
+    end
+  end
 
   def update
     id = params[:id]
@@ -23,6 +33,6 @@ class OrderItemsController < ApplicationController
     id = params[:id]
     order_item = OrderItem.find(id)
     order_item.destroy
-    redirect_to orders_path
+    redirect_to order_items_path
   end
 end
