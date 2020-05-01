@@ -9,7 +9,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:current_user_id] = user.id
       flash[:notice] = " you're signed in !"
-      create_order
+      new_order = Order.create!(user_id: user.id,
+                                date: Date.today,
+                                status: "not placed")
       redirect_to menu_items_path
     else
       flash[:error] = "your login attempt was invalid. please try again"

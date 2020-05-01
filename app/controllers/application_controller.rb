@@ -17,13 +17,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def create_order
-    new_order = Order.create!(user_id: current_user.id,
-                              date: Date.today,
-                              status: "not placed")
-  end
-
-  def order_id
-    return @order_id
+  def ensure_clerk_logged_in
+    unless current_user.role == "clerk"
+      redirect_to "/"
+    end
   end
 end

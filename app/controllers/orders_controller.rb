@@ -4,9 +4,6 @@ class OrdersController < ApplicationController
   def index
     if current_user
       @orders = Order.of_user(current_user)
-      order = Order.current_order(current_user)
-      @order = order
-      @order_items = OrderItem.where("order_id = ?", order.id)
 
       render "index"
     else
