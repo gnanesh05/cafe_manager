@@ -31,7 +31,7 @@
     font-family: 'Lato', sans-serif;
     font-weight: 900 ;
   
-      padding-left: :100 px ;
+      padding-left: 100 px ;
       padding-right:100 px;
   
     
@@ -47,7 +47,7 @@
   .container2{
   
           
-          width: 100 %;
+          width: 100%;
           text-align: center;
           display: block;
     
@@ -55,13 +55,16 @@
   .nav-main {
    
     overflow: hidden;
-    width: 900 %
+    width: 100%;
+    color: tomato;
   }
   
   
   .nav-main a {
+    color: violet;
     float: right;
-    color: yellow;
+    background-color: tomato;
+    
     text-align: center;
     padding: 14px 35px;
     text-decoration: none;
@@ -95,3 +98,4 @@
     ul{
       flex-direction: column;
     }
+  }

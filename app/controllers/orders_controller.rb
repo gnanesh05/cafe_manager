@@ -7,7 +7,9 @@ class OrdersController < ApplicationController
       render "index"
     end
     if @current_user.role == "clerk"
-      @orders = Order.pending_orders
+      @orders = Order.received_orders
+      @delivered = Order.delivered_orders
+
       render "index"
     end
     if @current_user == nil
@@ -16,11 +18,21 @@ class OrdersController < ApplicationController
   end
 
   def update
-    id = params[:id]
-    order = Order.find(id)
-    order.status = "placed"
-    order.save!
-    redirect_to orders_path
+    if @current_user.role == "user"
+      id = params[:id]
+      order = Order.find(id)
+      order.status = "received"
+      order.save!
+      redirect_to orders_path
+    else
+      id = params[:id]
+      order = Order.find(id)
+      order.status = "delivered"
+      time = Time.now
+      order.delivered_at = time.to_formatted_s(:long)
+      order.save!
+      redirect_to orders_path
+    end
   end
 
   def destroy

@@ -34,9 +34,11 @@
          user_role: @current_user.role 
         
             } %>
-<div class="box">
+ <%if @current_user.role == "user"%>
+  <div class="box">
 	<a class="button" href="/order_items">view cart</a>
-</div>
+  </div>
+ <%end%>
 
 </body>
 

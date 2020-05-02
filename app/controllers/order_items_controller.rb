@@ -2,7 +2,7 @@ class OrderItemsController < ApplicationController
   before_action :ensure_user_logged_in
 
   def index
-    if current_user
+    if @current_user.role == "user"
       order = Order.current_order(current_user)
       @order = order
       @order_items = OrderItem.where("order_id = ?", order.id)

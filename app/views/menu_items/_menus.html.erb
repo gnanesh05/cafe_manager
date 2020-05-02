@@ -7,7 +7,9 @@
     
     <th class="heading"> Item</th>
     <th class="heading">Rate</th>
-    <th class="heading">Cart</th>
+    <% if user_role == "user"%>
+     <th class="heading">Cart</th>
+    <%end%>
   </tr>
   <% menus.each do |item| %>
   <tr>

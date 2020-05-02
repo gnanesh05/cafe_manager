@@ -3,14 +3,18 @@ class Order < ApplicationRecord
   belongs_to :user
 
   def self.of_user(user)
-    all.where("user_id = ? and status = ?", user.id, "placed")
+    all.where("user_id = ? and status = ?", user.id, "received")
   end
 
   def self.current_order(user)
     all.where("user_id = ? and status = ?", user.id, "not placed").last
   end
 
-  def self.pending_orders()
-    all.where("status = ?", "placed")
+  def self.received_orders()
+    all.where(status: "received", delivered_at: nil)
+  end
+
+  def self.delivered_orders()
+    all.where(status: "delivered")
   end
 end

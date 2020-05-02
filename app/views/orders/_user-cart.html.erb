@@ -2,16 +2,33 @@
   <hr>
    
     <%if cart %>
+     <h4>pending orders </h4>
      <% cart.each do |order|%>
        <li> 
-       ordered on: <%=order.date%>
-       delivered at: <%=order.delivered_at%>
+       ordered on: <%=order.date%> 
        order status: <%=order.status%>
+       <% if user_role == "clerk"%>
+           <%= form_with(url: order_path(order.id), method: :put) do %>  
+            <%= button_tag 'delivered',type:'submit'%>
+           <% end %>
+        <%end%>
        </li>
-      <%end%>
-    <%else%>
+       <%end%>
+       <%if user_role == "clerk" && delivered%>
+        <hr>
+        <h4>delivered orders </h4>
+        <% delivered.each do |order|%>
+         <li>
+          ordered on: <%=order.date%> 
+          delivered at: <%=order.delivered_at%>
+          order status: <%=order.status%>
+         </li>
+        <%end%>
+       <%end%> 
+      
+      <%else%>
       <h3> place an order with just few clicks !! </h3>
       <%=link_to "menus", menu_items_path%>
-    <%end%>
+      <%end%>
 
    
