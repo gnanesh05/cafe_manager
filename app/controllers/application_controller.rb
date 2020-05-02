@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def ensure_user_logged_in
     unless current_user
-      redirect_to "/"
+      redirect_to sessions_path
     end
   end
 
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def ensure_clerk_logged_in
     unless current_user.role == "clerk"
-      redirect_to "/"
+      redirect_to sessions_path
     end
   end
 end

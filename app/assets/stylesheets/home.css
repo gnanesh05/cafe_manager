@@ -1,4 +1,4 @@
-body{
+#Main-body{
 
     /* The image used */
    
@@ -38,7 +38,7 @@ body{
    
   
   }
-  body section :hover {
+  .container-below .below-text :hover {
     background-color: green;
     
     text-decoration:underline; 
@@ -61,7 +61,7 @@ body{
   
   .nav-main a {
     float: right;
-    color: white;
+    color: yellow;
     text-align: center;
     padding: 14px 35px;
     text-decoration: none;
@@ -81,10 +81,9 @@ body{
     text-decoration:underline; 
   }
   
-  .nav-main .nav-head{
+  .nav-head{
     float: left;
-    color: white;
-     color: darkgray;
+    color: yellow;
     padding: 15 px 15 px;
     text-decoration: none;
     font-size: 17 px;
