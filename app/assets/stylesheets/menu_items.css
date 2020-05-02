@@ -1,4 +1,4 @@
-table {
+.menu-table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 80%;
@@ -22,7 +22,7 @@ table {
     align-items: center;
   
   }
-td, th {
+.heading .table-data {
   border: 1px solid #dddddd;
   text-align: center;
   padding: 3px;
@@ -81,7 +81,7 @@ tr:nth-child(even) {
   text-decoration:underline; 
 }
 
-.nav-below {
+.below1 {
 	height:100px;
   background-color:lightblue;
   margin-top: 20 px;
@@ -90,7 +90,7 @@ tr:nth-child(even) {
   margin-right: 12 px;
 }
 
-.nav-below-right{
+.below1-right{
   float:right;
   align-items: center;
   margin: 12 px 15 px;

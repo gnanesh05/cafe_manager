@@ -2,11 +2,15 @@ class OrdersController < ApplicationController
   before_action :ensure_user_logged_in
 
   def index
-    if current_user
+    if @current_user.role == "user"
       @orders = Order.of_user(current_user)
-
       render "index"
-    else
+    end
+    if @current_user.role == "clerk"
+      @orders = Order.pending_orders
+      render "index"
+    end
+    if @current_user == nil
       redirect_to users_path
     end
   end

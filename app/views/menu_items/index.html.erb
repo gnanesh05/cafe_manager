@@ -1,8 +1,8 @@
 
 
 <body id="Menu-body">
-  <div class="nav-below">
-     <div class="nav-below-right">
+  <div class="below1">
+     <div class="below1-right">
       <label for="Menus">Choose a Menu:</label>
      <select id="Menus">
        <option value="standar menu">Standard Menu</option>
@@ -15,21 +15,23 @@
 <%= render partial: "menus", locals:{
                 
          menus:MenuItem.breakfast,
-         section_title: "Breakfast" 
-        
+         section_title: "Breakfast", 
+         user_role: @current_user.role
             } %>
 
 <%= render partial: "menus", locals:{
                 
          menus:MenuItem.lunch,
-         section_title: "Lunch" 
+         section_title: "Lunch",
+           user_role: @current_user.role
         
             } %>
 
 <%= render partial: "menus", locals:{
                 
          menus:MenuItem.dinner,
-         section_title: "Dinner" 
+         section_title: "Dinner",
+         user_role: @current_user.role 
         
             } %>
 <div class="box">

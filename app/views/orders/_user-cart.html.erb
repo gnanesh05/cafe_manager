@@ -1,18 +1,17 @@
 
   <hr>
    
-    <%if cart !=nil %>
+    <%if cart %>
      <% cart.each do |order|%>
        <li> 
        ordered on: <%=order.date%>
        delivered at: <%=order.delivered_at%>
        order status: <%=order.status%>
        </li>
-       <%end%>
+      <%end%>
     <%else%>
       <h3> place an order with just few clicks !! </h3>
       <%=link_to "menus", menu_items_path%>
-      
     <%end%>
 
    

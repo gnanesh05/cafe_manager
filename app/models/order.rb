@@ -9,4 +9,8 @@ class Order < ApplicationRecord
   def self.current_order(user)
     all.where("user_id = ? and status = ?", user.id, "not placed").last
   end
+
+  def self.pending_orders()
+    all.where("status = ?", "placed")
+  end
 end
