@@ -17,6 +17,13 @@ class OrdersController < ApplicationController
     end
   end
 
+  def create
+    Order.create!(user_id: @current_user.id,
+                  date: Date.today,
+                  status: "not placed")
+    redirect_to menu_items_path
+  end
+
   def update
     if @current_user.role == "user"
       id = params[:id]
