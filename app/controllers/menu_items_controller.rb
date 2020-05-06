@@ -1,5 +1,4 @@
 class MenuItemsController < ApplicationController
-  skip_before_action :verify_authenticity_token
   before_action :ensure_user_logged_in
 
   def index
@@ -7,5 +6,23 @@ class MenuItemsController < ApplicationController
   end
 
   def create
+    name = params[:item]
+    price = params[:rate]
+    description = params[:description]
+    category = params[:category]
+    menu = params[:menu]
+
+    new_item = MenuItem.new(name: name,
+                            price: price,
+                            description: description,
+                            category_name: category,
+                            menu_id: menu)
+    if new_item.save
+      flash[:success] = new_item.success.full_messages.join(", ")
+      redirect_to menu_items_path
+    else
+      flash[:error] = new_item.errors.full_messages.join(", ")
+      redirect_to menus_path
+    end
   end
 end

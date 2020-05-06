@@ -1,0 +1,31 @@
+
+ <div class="below1">
+     <div class="below1-right">
+     </div>
+     </div>
+
+    <%=form_with url:menu_items_path ,method: :post do%>
+        <div class="add-item">
+         <p class="item-label">item : </p>
+          <%= text_field :item ,class:"item-input"%>
+         <div>
+         <div class="add-section">
+         <p class="item-label">rate : </p>
+         <%=text_field :rate, class:"item-input"%>
+       </div>
+      <div class="add-section">
+      <p class="item-label">description : </p>
+      <%= select_tag 'description', options_for_select(menu_item.collect { |u| [u.description] }), class:"item-input"%>
+      </div>
+       <div class="add-section">
+      <p class="item-label">category : </p>
+      <%= select_tag 'category', options_for_select(menu_item.collect{ |u| [u.category_name] }), class:"item-input"%>
+      </div>
+       <div class="add-section">
+      <p class="item-label">menu : </p>
+      <%= select_tag 'menu', options_for_select(menu.collect{ |u| [u.name, u.id] }) , class:"item-input"%>
+      </div>
+      <div class="add-section">
+       <%=submit_tag "add", class:"item-submit" %>
+      </div>
+   <%end%>

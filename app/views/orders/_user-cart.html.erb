@@ -1,8 +1,8 @@
 
   <hr>
-   
+  
     <%if cart !=nil %>
-     <% if user_role == "clerk"%>
+     <% if user_role == "owner"%>
       <h4>pending orders </h4>
      <%else%>
       <h4>your orders </h4>
@@ -14,9 +14,9 @@
        ordered on: <%=order.date%> 
        order status: <%=order.status%>
        <br>
-       <% if user_role == "clerk"%>
-       <%user_id = order.user_id %>
-           <% user = User.find(user_id)%>
+       <% if user_role == "clerk" %>
+       <% user_id = order.user_id %>
+       <% user = User.find(user_id)%>
        ordered by: <%=user.name %>  
            <%= form_with(url: order_path(order.id), method: :put) do %>  
             <%= button_tag 'delivered',type:'submit'%>
@@ -30,7 +30,8 @@
             <%= button_tag 'make a another order',type:'submit'%>
         <% end %>
       <%end%>
-       <%if user_role == "clerk" && delivered%>
+       <%if user_role == "clerk" || user_role =="owner" %>
+       <%if delivered%>
         <hr>
         <h4>delivered orders </h4>
         <% delivered.each do |order|%>
@@ -44,11 +45,12 @@
            ordered by: <%=user.name %>  
          </li>
         <%end%>
+        <%end%>
        <%end%> 
      
-      <%else%>
+    <%else%>
       <h3> place an order with just few clicks !! </h3>
       <%=link_to "menus", menu_items_path%>
-      <%end%>
+     <%end%>
 
    

@@ -22,4 +22,10 @@ class ApplicationController < ActionController::Base
       redirect_to sessions_path
     end
   end
+
+  def ensure_owner_logged_in
+    unless current_user.role == "owner"
+      redirect_to sessions_path
+    end
+  end
 end

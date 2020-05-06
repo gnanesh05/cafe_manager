@@ -28,12 +28,20 @@
                <%= link_to "sign-out" ,destroy_session_path, method:"delete"%>
                <%= link_to "Menus", menu_items_path %>
               <%end%>
-              <%else%>
-               <%= link_to "create account" ,users_path%>
-               <%= link_to "login" ,sessions_path%>
-                <%= link_to "Menus", menu_items_path %>
-                <%= link_to "Home", "/" %>
-              <%end%> 
+              <%if @current_user.role == "owner"%>
+                <%= link_to "All orders" ,orders_path%>
+               <%= link_to "Home", "/" %>
+               <%= link_to "sign-out" ,destroy_session_path, method:"delete"%>
+               <%= link_to "Menus", menu_items_path %>
+               <%= link_to "Add menu", menus_path %>
+
+              <%end%>
+      <%else%>
+        <%= link_to "create account" ,users_path%>
+        <%= link_to "login" ,sessions_path%>
+        <%= link_to "Menus", menu_items_path %>
+        <%= link_to "Home", "/" %>
+        <%end%> 
        
             
            

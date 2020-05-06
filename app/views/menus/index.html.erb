@@ -1,0 +1,8 @@
+<%= render partial: "add_menu", locals:{
+                
+        
+         section_title: "add menu_item", 
+         user_role: @current_user.role,
+         menu: Menu.all,
+         menu_item: MenuItem.all
+            } %>

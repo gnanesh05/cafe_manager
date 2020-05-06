@@ -6,10 +6,9 @@ class OrdersController < ApplicationController
       @orders = Order.of_user(current_user)
       render "index"
     end
-    if @current_user.role == "clerk"
+    if @current_user.role == "clerk" || @current_user.role == "owner"
       @orders = Order.received_orders
       @delivered = Order.delivered_orders
-
       render "index"
     end
     if @current_user == nil
