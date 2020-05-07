@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   def index
     if @current_user.role == "user"
       @orders = Order.of_user(current_user)
+      @user_delivered = Order.delivered_orders(current_user)
       render "index"
     end
     if @current_user.role == "clerk" || @current_user.role == "owner"
@@ -35,7 +36,7 @@ class OrdersController < ApplicationController
       order = Order.find(id)
       order.status = "delivered"
       time = Time.now
-      order.delivered_at = time.to_formatted_s(:long)
+      order.delivered_at = Time.now.to_formatted_s(:long)
       order.save!
       redirect_to orders_path
     end
